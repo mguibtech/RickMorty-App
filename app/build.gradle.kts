@@ -5,6 +5,16 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
+    id("dev.detekt")
+}
+
+detekt {
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    autoCorrect = true
+}
+
+tasks.named("preBuild") {
+    dependsOn("detekt")
 }
 
 android {
@@ -48,6 +58,9 @@ kotlin {
 
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
+    implementation(project(":core"))
+    detektPlugins(libs.detekt.formatting)
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
@@ -59,7 +72,6 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    val ktorVersion = "3.3.2"
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.client.logging)

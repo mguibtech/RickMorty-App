@@ -2,8 +2,10 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.jetbrains.kotlin.jvm) apply false
     id("org.jetbrains.kotlin.android") version "2.4.21" apply false
     id("org.jetbrains.kotlin.plugin.serialization") version "2.4.21" apply false
     id("com.google.dagger.hilt.android") version "2.60.1" apply false
     id("com.google.devtools.ksp") version "2.2.20-2.0.4" apply false
+    id("dev.detekt") version "2.0.0-alpha.6" apply false
 }

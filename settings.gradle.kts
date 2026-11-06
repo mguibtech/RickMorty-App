@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "RickMorty App"
 include(":app")
+include(":core")
